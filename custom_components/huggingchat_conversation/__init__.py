@@ -141,6 +141,7 @@ class HuggingChatAgent(conversation.AbstractConversationAgent):
             await self.hass.async_add_executor_job(
                 chatbot.change_conversation, conversation_object
             )
+            prompt = self._async_generate_prompt(raw_prompt)
         else:
             # Set conversation_id to the HuggingChat conversation ID
             info = await self.hass.async_add_executor_job(chatbot.get_conversation_info)
